@@ -1,0 +1,16 @@
+{
+  "name": "Scrim-s01m4gs",
+  "description": "https://scrimba.com/learn-typescript-c0l/~0c",
+  "scripts": {
+    "watch": "webpack -w",
+    "build": "webpack",
+    "dev": "vite"
+  },
+  "dependencies": {
+    "webpack": "^2.0"
+  },
+  "devDependencies": {
+    "ts-loader": "*",
+    "typescript": "*"
+  }
+}
