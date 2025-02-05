@@ -24,8 +24,9 @@ const reviews = [
 ];
 
 function showReviewTotal(value: number, name: string, loyal: boolean) {
+  const star = "\u2B50";
   reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${name} ${
-    loyal ? "*" : ""
+    loyal ? star : ""
   }`;
 }
 
