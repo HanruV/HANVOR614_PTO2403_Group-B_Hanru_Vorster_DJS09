@@ -107,15 +107,21 @@ const properties: {
 
 // functions //
 
+function makeMultiple(value: number): string {
+  if (value > 1 || value == 0) {
+    return "s";
+  } else return "";
+}
+
 function showReviewTotal(
   value: number,
   reviewer: string,
   isLoyalty: LoyaltyUser
-) {
+): void {
   const star = LoyaltyUser.GOLD_USER ? "\u2B50" : "";
-  reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${reviewer} ${
-    isLoyalty ? star : ""
-  }`;
+  reviewTotalDisplay.innerHTML = `${value.toString()} Review${makeMultiple(
+    value
+  )} | last reviewed by: ${reviewer} ${isLoyalty ? star : ""}`;
 }
 
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
