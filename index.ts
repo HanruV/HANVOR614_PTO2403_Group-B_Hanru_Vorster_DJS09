@@ -4,29 +4,37 @@ const reviewTotalDisplay = document.querySelector("#reviews");
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 
+// enums
+
+enum LoyaltyUser {
+  GOLD_USER = "GOLD_USER",
+  SILVER_USER = "SILVER_USER",
+  BRONZE_USER = "BRONZE_USER",
+}
+
 // reviews
 const reviews: {
   name: string;
   stars: number;
-  loyaltyUser: boolean;
+  loyaltyUser: LoyaltyUser;
   date: string;
 }[] = [
   {
     name: "Sheia",
     stars: 5,
-    loyaltyUser: true,
+    loyaltyUser: LoyaltyUser.GOLD_USER,
     date: "01-04-2021",
   },
   {
     name: "Andrzej",
     stars: 3,
-    loyaltyUser: false,
+    loyaltyUser: LoyaltyUser.BRONZE_USER,
     date: "28-03-2021",
   },
   {
     name: "Omar",
     stars: 4,
-    loyaltyUser: true,
+    loyaltyUser: LoyaltyUser.SILVER_USER,
     date: "27-03-2021",
   },
 ];
@@ -114,10 +122,14 @@ for (let i = 0; i < properties.length; i++) {
   propertyContainer.appendChild(card);
 }
 
-function showReviewTotal(value: number, name: string, loyal: boolean) {
-  const star = "\u2B50";
-  reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${name} ${
-    loyal ? star : ""
+function showReviewTotal(
+  value: number,
+  reviewer: string,
+  isLoyalty: LoyaltyUser
+) {
+  const star = LoyaltyUser.GOLD_USER ? "\u2B50" : "";
+  reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${reviewer} ${
+    isLoyalty ? star : ""
   }`;
 }
 
