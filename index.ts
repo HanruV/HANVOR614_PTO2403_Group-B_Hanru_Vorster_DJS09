@@ -1,6 +1,7 @@
 const returningUserDisplay = document.querySelector("#returning-user");
 const userNameDisplay = document.querySelector("#user");
 const reviewTotalDisplay = document.querySelector("#reviews");
+const propertyContainer = document.querySelector(".properties");
 
 // reviews
 const reviews: {
@@ -78,7 +79,7 @@ const properties: {
   isAvailable: boolean;
 }[] = [
   {
-    image: "",
+    image: "images/colombia-property.jpg",
     title: "Colombian Shack",
     price: 45,
     location: {
@@ -91,7 +92,7 @@ const properties: {
     isAvailable: true,
   },
   {
-    image: "",
+    image: "images/poland-property.jpg",
     title: "Polish Cottage",
     price: 34,
     location: {
@@ -104,7 +105,7 @@ const properties: {
     isAvailable: false,
   },
   {
-    image: "",
+    image: "images/london-property.jpg",
     title: "London Flat",
     price: 23,
     location: {
@@ -117,3 +118,16 @@ const properties: {
     isAvailable: true,
   },
 ];
+
+// add the properties
+
+//Add the properties
+for (let i = 0; i < properties.length; i++) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  card.innerHTML = properties[i].title;
+  const image = document.createElement("img");
+  image.setAttribute("src", properties[i].image);
+  card.appendChild(image);
+  propertyContainer.appendChild(card);
+}
