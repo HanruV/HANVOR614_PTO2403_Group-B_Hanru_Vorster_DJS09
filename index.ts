@@ -2,6 +2,7 @@ const returningUserDisplay = document.querySelector("#returning-user");
 const userNameDisplay = document.querySelector("#user");
 const reviewTotalDisplay = document.querySelector("#reviews");
 const propertyContainer = document.querySelector(".properties");
+const footer = document.querySelector(".footer");
 
 // reviews
 const reviews: {
@@ -44,25 +45,6 @@ const you: {
   age: 35,
   stayedAt: ["florida-home", "oman-flat", "tokyo-bungalow"],
 };
-
-// functions
-function showReviewTotal(value: number, name: string, loyal: boolean) {
-  const star = "\u2B50";
-  reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${name} ${
-    loyal ? star : ""
-  }`;
-}
-
-showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
-function populateUser(isReturning: boolean, userName: string) {
-  if (isReturning) {
-    returningUserDisplay.innerHTML = "back";
-  }
-  userNameDisplay.innerHTML = userName;
-}
-
-populateUser(you.isReturning, you.firstName);
 
 // properties
 const properties: {
@@ -119,6 +101,8 @@ const properties: {
   },
 ];
 
+// functions
+
 // add the properties
 for (let i = 0; i < properties.length; i++) {
   const card = document.createElement("div");
@@ -129,3 +113,25 @@ for (let i = 0; i < properties.length; i++) {
   card.appendChild(image);
   propertyContainer.appendChild(card);
 }
+
+function showReviewTotal(value: number, name: string, loyal: boolean) {
+  const star = "\u2B50";
+  reviewTotalDisplay.innerHTML = `Review total: ${value.toString()} | last reviewed by: ${name} ${
+    loyal ? star : ""
+  }`;
+}
+
+showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
+
+function populateUser(isReturning: boolean, userName: string) {
+  if (isReturning) {
+    returningUserDisplay.innerHTML = "back";
+  }
+  userNameDisplay.innerHTML = userName;
+}
+
+populateUser(you.isReturning, you.firstName);
+
+// location
+let currentLocation: [string, string, number] = ["Pretoria", "12:00", 30];
+footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
