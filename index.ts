@@ -3,6 +3,7 @@ const userNameDisplay = document.querySelector("#user");
 const reviewTotalDisplay = document.querySelector("#reviews");
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
+import { Price, Country } from "./types";
 
 // enums
 enum Permissions {
@@ -58,7 +59,7 @@ const properties: {
     firstLine: string;
     city: string;
     code: number;
-    country: string;
+    country: Country;
   };
   contact: [number, string];
   isAvailable: boolean;
