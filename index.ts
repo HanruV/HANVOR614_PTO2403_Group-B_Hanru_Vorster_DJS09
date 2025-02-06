@@ -8,6 +8,7 @@ import { Permissions, LoyaltyUser } from "./enums.ts";
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./utils.ts"
 import { Review } from "./interfaces.ts";
 import { Property } from "./interfaces.ts";
+import { MainProperty } from "./classes.ts";
 
 // reviews
 const reviews: Review []= [
@@ -136,18 +137,6 @@ button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation : [string, string, number] = ['Pretoria', '11.03', 30]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
-
-// classes
-class MainProperty {
-  src: string
-  title: string
-  reviews: Review[]
-  constructor(src, title, reviews) {
-    this.src = src
-    this.title = title
-    this.reviews = reviews
-  }
-}
 
 let yourMainProperty = new MainProperty(
   'images/italian-property.jpg', 
