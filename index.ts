@@ -10,7 +10,6 @@ import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./
 import { Review } from "./interfaces.ts";
 
 
-
 // reviews
 const reviews: Review []= [
   {
@@ -117,8 +116,7 @@ for (let i = 0; i < properties.length; i++) {
   propertyContainer.appendChild(card);
   showDetails(you.permissions, card, properties[i].price);
 }
-
-
+ 
 let count = 0
 function addReviews(array: Review[]): void{
     if (!count ) {
