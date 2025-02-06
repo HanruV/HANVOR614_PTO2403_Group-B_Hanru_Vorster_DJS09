@@ -83,6 +83,19 @@ const properties: Property[] = [
     contact: [+1123495082908, "andyluger@aol.com"],
     isAvailable: true,
   },
+  {
+    image: "images/malaysian-hotel.jpeg",
+    title: "Malia Hotel",
+    price: 35,
+    location: {
+      firstLine: "Room 4",
+      city: "Malia",
+      code: 45334,
+      country: "Malasia",
+    },
+    contact: [+60349822083, "lee34@gmail.com"],
+    isAvailable: false,
+  },
 ];
 
 // functions //
