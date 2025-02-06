@@ -2,6 +2,7 @@ const returningUserDisplay = document.querySelector("#returning-user");
 const userNameDisplay = document.querySelector("#user");
 const reviewTotalDisplay = document.querySelector("#reviews");
 import { Permissions, LoyaltyUser } from "./enums.ts";
+import { Review } from "./interfaces.ts";
 
 
 export function showReviewTotal(
@@ -68,18 +69,8 @@ export function showReviewTotal(
 ]
 
 
-// Broken code
-export function getTopTwoReviews(reviews: {
-    name: string;
-    stars: number;
-    loyalyuser: LoyaltyUser;
-    date: string;
-}[]) : {
-      name: string;
-    stars: number;
-    loyalyuser: LoyaltyUser;
-    date: string;  
-}[]  {
- const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
- return sortedReviews.slice(0,2)
-}
+
+export function getTopTwoReviews(reviews : Review[]) : Review[]  {
+    const sortedReviews = reviews.sort((a, b) => b.stars - a.stars)
+    return sortedReviews.slice(0,2)
+   }

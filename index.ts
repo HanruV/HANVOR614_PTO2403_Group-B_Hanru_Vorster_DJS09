@@ -7,8 +7,12 @@ const button = document.querySelector('button')
 import { Price, Country } from "./types";
 import { Permissions, LoyaltyUser } from "./enums.ts";
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./utils.ts"
+import { Review } from "./interfaces.ts";
+
+
+
 // reviews
-const reviews: any[] = [
+const reviews: Review []= [
   {
     name: "Sheia",
     stars: 5,
@@ -26,7 +30,6 @@ const reviews: any[] = [
     stars: 4,
     loyaltyUser: LoyaltyUser.SILVER_USER,
     date: "27-03-2021",
-    description: "Great hosts, location was a bit further than said",
   },
 ];
 
@@ -116,14 +119,8 @@ for (let i = 0; i < properties.length; i++) {
 }
 
 
-//Broken code
 let count = 0
-function addReviews(array: {
-  name: string;
-  stars: number;
-  loyaltyUser: LoyaltyUser;
-  date: string;
-}[]): void{
+function addReviews(array: Review[]): void{
     if (!count ) {
         count++
         const topTwo = getTopTwoReviews(array)
