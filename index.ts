@@ -4,10 +4,10 @@ const footer = document.querySelector(".footer");
 const reviewContainer = document.querySelector('.reviews')
 const container = document.querySelector('.container')
 const button = document.querySelector('button')
-import { Price, Country } from "./types";
 import { Permissions, LoyaltyUser } from "./enums.ts";
 import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./utils.ts"
 import { Review } from "./interfaces.ts";
+import { Property } from "./interfaces.ts";
 
 
 // reviews
@@ -43,19 +43,7 @@ const you = {
 };
 
 // properties
-const properties: {
-  image: string;
-  title: string;
-  price: number;
-  location: {
-    firstLine: string;
-    city: string;
-    code: number;
-    country: Country;
-  };
-  contact: [number, string];
-  isAvailable: boolean;
-}[] = [
+const properties: Property[] = [
   {
     image: "images/colombia-property.jpg",
     title: "Colombian Shack",
@@ -72,7 +60,7 @@ const properties: {
   {
     image: "images/poland-property.jpg",
     title: "Polish Cottage",
-    price: 34,
+    price: 30,
     location: {
       firstLine: "no 23",
       city: "Gdansk",
@@ -85,7 +73,7 @@ const properties: {
   {
     image: "images/london-property.jpg",
     title: "London Flat",
-    price: 23,
+    price: 25,
     location: {
       firstLine: "flat 15",
       city: "London",
@@ -138,7 +126,6 @@ let currentLocation : [string, string, number] = ['Pretoria', '11.03', 30]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
 
 // classes
-
 class MainProperty {
   src: string
   title: string
@@ -149,3 +136,18 @@ class MainProperty {
     this.reviews = reviews
   }
 }
+
+let yourMainProperty = new MainProperty(
+  'images/italian-property.jpg', 
+  'Italian House',
+  [{
+      name: 'Olive',
+      stars: 5,
+      loyaltyUser: LoyaltyUser.GOLD_USER,
+      date: '12-04-2021'
+  }] )
+
+const mainImageContainer = document.querySelector('.main-image')
+const image = document.createElement('img')
+image.setAttribute('src', yourMainProperty.src)
+mainImageContainer.appendChild(image)
