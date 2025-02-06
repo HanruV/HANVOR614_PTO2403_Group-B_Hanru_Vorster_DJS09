@@ -1,9 +1,12 @@
 
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
+const reviewContainer = document.querySelector('.reviews')
+const container = document.querySelector('.container')
+const button = document.querySelector('button')
 import { Price, Country } from "./types";
 import { Permissions, LoyaltyUser } from "./enums.ts";
-import { showReviewTotal, populateUser, showDetails } from "./utils.ts"
+import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./utils.ts"
 // reviews
 const reviews: any[] = [
   {
@@ -112,6 +115,29 @@ for (let i = 0; i < properties.length; i++) {
   showDetails(you.permissions, card, properties[i].price);
 }
 
-// location
-let currentLocation: [string, string, number] = ["Pretoria", "12:00", 30];
-footer.innerHTML = `${currentLocation[0]} ${currentLocation[1]} ${currentLocation[2]}°`;
+
+//Broken code
+let count = 0
+function addReviews(array: {
+  name: string;
+  stars: number;
+  loyaltyUser: LoyaltyUser;
+  date: string;
+}[]): void{
+    if (!count ) {
+        count++
+        const topTwo = getTopTwoReviews(array)
+        for (let i = 0; i < topTwo.length; i++) {
+            const card = document.createElement('div')
+            card.classList.add('review-card')
+            card.innerHTML = topTwo[i].stars + ' stars from ' + topTwo[i].name
+            reviewContainer.appendChild(card)
+        }
+        container.removeChild(button) 
+    }
+}
+
+button.addEventListener('click', () => addReviews(reviews))
+
+let currentLocation : [string, string, number] = ['London', '11.03', 17]
+footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
