@@ -9,7 +9,6 @@ import { showReviewTotal, populateUser, showDetails, getTopTwoReviews } from "./
 import { Review } from "./interfaces.ts";
 import { Property } from "./interfaces.ts";
 
-
 // reviews
 const reviews: Review []= [
   {
