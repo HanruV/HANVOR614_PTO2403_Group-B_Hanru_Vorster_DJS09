@@ -1,22 +1,9 @@
-const returningUserDisplay = document.querySelector("#returning-user");
-const userNameDisplay = document.querySelector("#user");
-const reviewTotalDisplay = document.querySelector("#reviews");
+
 const propertyContainer = document.querySelector(".properties");
 const footer = document.querySelector(".footer");
 import { Price, Country } from "./types";
-
-// enums
-enum Permissions {
-  ADMIN = "ADMIN",
-  READ_ONLY = "READ_ONLY",
-}
-
-enum LoyaltyUser {
-  GOLD_USER = "GOLD_USER",
-  SILVER_USER = "SILVER_USER",
-  BRONZE_USER = "BRONZE_USER",
-}
-
+import { Permissions, LoyaltyUser } from "./enums.ts";
+import { showReviewTotal, populateUser, showDetails } from "./utils.ts"
 // reviews
 const reviews: any[] = [
   {
@@ -107,48 +94,11 @@ const properties: {
 
 // functions //
 
-function makeMultiple(value: number): string {
-  if (value > 1 || value == 0) {
-    return "s";
-  } else return "";
-}
-
-function showReviewTotal(
-  value: number,
-  reviewer: string,
-  isLoyalty: LoyaltyUser
-): void {
-  const star = LoyaltyUser.GOLD_USER ? "\u2B50" : "";
-  reviewTotalDisplay.innerHTML = `${value.toString()} Review${makeMultiple(
-    value
-  )} | last reviewed by: ${reviewer} ${isLoyalty ? star : ""}`;
-}
-
 showReviewTotal(reviews.length, reviews[0].name, reviews[0].loyaltyUser);
-
-function populateUser(isReturning: boolean, userName: string) {
-  if (isReturning) {
-    returningUserDisplay.innerHTML = "back";
-  }
-  userNameDisplay.innerHTML = userName;
-}
 
 populateUser(you.isReturning, you.firstName);
 
 let authorityStatus: any;
-isLoggedIn = false;
-
-function showDetails(
-  authorityStatus: boolean | Permissions,
-  element: HTMLDivElement,
-  price: number
-) {
-  if (authorityStatus) {
-    const priceDisplay = document.createElement("div");
-    priceDisplay.innerHTML = price.toString() + "/night";
-    element.appendChild(priceDisplay);
-  }
-}
 
 // Add the properties
 for (let i = 0; i < properties.length; i++) {
