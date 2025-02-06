@@ -136,3 +136,16 @@ button.addEventListener('click', () => addReviews(reviews))
 
 let currentLocation : [string, string, number] = ['Pretoria', '11.03', 30]
 footer.innerHTML = currentLocation[0] + ' ' + currentLocation[1] + ' ' + currentLocation[2] + '°'
+
+// classes
+
+class MainProperty {
+  src: string
+  title: string
+  reviews: Review[]
+  constructor(src, title, reviews) {
+    this.src = src
+    this.title = title
+    this.reviews = reviews
+  }
+}
